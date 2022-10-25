@@ -1,0 +1,94 @@
+@import 'reset';
+@import 'vars';
+
+%pointer {
+  cursor: pointer;
+}
+
+body {
+  background-color: $body-color;
+}
+
+.game {
+  background-color: $game-color;
+  height: 600px;
+}
+
+h1 {
+  color: red;
+
+  &:hover {
+    color: $main-color;
+  }
+}
+
+.title {
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 15%;
+}
+
+.info {
+  color: white;
+  font-size: 28px;
+  text-align: center;
+  margin-top: .8em;
+  margin-bottom: .8em;
+}
+
+.field {
+  display: grid;
+  max-width: 312px;
+  margin: 0 auto;
+  grid-template-columns: auto auto auto;
+  background-color: $cell-color;
+  padding: 10px;
+}
+
+.cell {
+  background-color: $game-color;
+  color: white;
+  border: 2px solid $cell-color;
+  min-width: 100px;
+  min-height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 52px;
+  @extend %pointer;
+}
+
+.X {
+    color: $x-color;
+}
+
+.O {
+    color: $o-color;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#reset {
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: blueviolet;
+    font-size: 1.2rem;
+    font-weight: 700;
+    @extend %pointer;
+    background: blue;
+    transition: all ease 1s;
+    transition-property: filter, transform, color;
+    
+    &:hover {
+      background-color: violet;
+      filter: drop-shadow(0.25rem 0 0.75rem #ef9035);
+      transform: perspective(50em) rotateY(50deg);
+      color: gold;
+    }
+}
