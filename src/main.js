@@ -1,3 +1,6 @@
 import './css/style.scss';
+import { startNewGame } from '@/reset.js';
 
-console.log('#');
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('reset').addEventListener('click', startNewGame);
+});

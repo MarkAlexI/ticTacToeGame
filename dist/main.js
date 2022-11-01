@@ -16,7 +16,17 @@
   \*********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css/style.scss */ \"./src/css/style.scss\");\n\nconsole.log('#');\n\n//# sourceURL=webpack://ticTacToeGame/./src/main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css/style.scss */ \"./src/css/style.scss\");\n/* harmony import */ var _reset_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/reset.js */ \"./src/modules/reset.js\");\n\n\ndocument.addEventListener('DOMContentLoaded', function () {\n  document.getElementById('reset').addEventListener('click', _reset_js__WEBPACK_IMPORTED_MODULE_1__.startNewGame);\n});\n\n//# sourceURL=webpack://ticTacToeGame/./src/main.js?");
+
+/***/ }),
+
+/***/ "./src/modules/reset.js":
+/*!******************************!*\
+  !*** ./src/modules/reset.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"startNewGame\": () => (/* binding */ startNewGame)\n/* harmony export */ });\nfunction startNewGame() {\n  window.location.reload();\n}\n\n//# sourceURL=webpack://ticTacToeGame/./src/modules/reset.js?");
 
 /***/ }),
 

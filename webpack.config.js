@@ -12,6 +12,12 @@ module.exports = (env = {}) => ({
     publicPath: "/dist/",
     clean: true
   },
+  resolve: {
+    extensions: ['.js', '.json'],
+    alias: {
+      '@': path.resolve('src/modules')
+    }
+  },
   module: {
     rules: [
       {
