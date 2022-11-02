@@ -1,5 +1,6 @@
 @import 'reset';
 @import 'vars';
+@import 'fonts';
 
 %pointer {
   cursor: pointer;
@@ -12,6 +13,7 @@ body {
 .game {
   background-color: $game-color;
   height: 600px;
+  font-family: 'Kolker Brush', cursive;
 }
 
 h1 {
@@ -78,8 +80,8 @@ h1 {
     padding: 10px;
     border-radius: 5px;
     border: blueviolet;
+    font-family: 'Roboto', sans-serif;
     font-size: 1.2rem;
-    font-weight: 700;
     @extend %pointer;
     background: blue;
     transition: all ease 1s;
