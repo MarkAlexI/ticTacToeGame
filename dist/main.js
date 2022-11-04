@@ -16,7 +16,17 @@
   \*********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css/style.scss */ \"./src/css/style.scss\");\n/* harmony import */ var _reset__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/reset */ \"./src/modules/reset.js\");\n/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/constants */ \"./src/modules/constants.js\");\n\n\n\ndocument.addEventListener('DOMContentLoaded', () => {\n  const cells = Array.from(document.querySelectorAll('.cell'));\n  console.log(cells);\n  document.getElementById('reset').addEventListener('click', _reset__WEBPACK_IMPORTED_MODULE_1__.startNewGame);\n});\n\n//# sourceURL=webpack://ticTacToeGame/./src/main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css/style.scss */ \"./src/css/style.scss\");\n/* harmony import */ var _reset__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/reset */ \"./src/modules/reset.js\");\n/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/constants */ \"./src/modules/constants.js\");\n/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/actions */ \"./src/modules/actions.js\");\n\n\n\n\ndocument.addEventListener('DOMContentLoaded', () => {\n  const cells = Array.from(document.querySelectorAll('.cell'));\n  cells.forEach((cell, i) => {\n    cell.addEventListener('click', () => (0,_actions__WEBPACK_IMPORTED_MODULE_3__.playerAction)(cell, i));\n  });\n  document.getElementById('reset').addEventListener('click', _reset__WEBPACK_IMPORTED_MODULE_1__.startNewGame);\n});\n\n//# sourceURL=webpack://ticTacToeGame/./src/main.js?");
+
+/***/ }),
+
+/***/ "./src/modules/actions.js":
+/*!********************************!*\
+  !*** ./src/modules/actions.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"activePlayer\": () => (/* binding */ activePlayer),\n/* harmony export */   \"isValidMove\": () => (/* binding */ isValidMove),\n/* harmony export */   \"playerAction\": () => (/* binding */ playerAction)\n/* harmony export */ });\nlet activePlayer = 'X';\nconst isValidMove = cell => cell.innerText ? false : true;\nconst playerAction = (cell, i) => {\n  if (isValidMove(cell)) {\n    cell.innerText = activePlayer;\n    activePlayer = activePlayer === 'X' ? 'O' : 'X';\n  }\n};\n\n\n//# sourceURL=webpack://ticTacToeGame/./src/modules/actions.js?");
 
 /***/ }),
 
