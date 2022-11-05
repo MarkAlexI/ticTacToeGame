@@ -1,9 +1,12 @@
 import './css/style.scss';
+import eventBus from '@/bus';
 import { startNewGame } from '@/reset';
 import { X_WON, O_WON, TIE, winConditions, gameBoard } from '@/constants';
-import { activePlayer, isValidMove, playerAction } from '@/actions';
+import { isValidMove, playerAction } from '@/actions';
 
 document.addEventListener('DOMContentLoaded', () => {
+  
+  eventBus.subscribe('move', message => console.log(`The player ${message} has made a move.`));
   
   const cells = Array.from(document.querySelectorAll('.cell'));
   

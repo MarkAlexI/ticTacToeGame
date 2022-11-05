@@ -1,12 +1,17 @@
+import eventBus from '@/bus';
+
 let activePlayer = 'X';
 
 const isValidMove = (cell) => cell.innerText ? false : true;
 
+const changeActivePlayer = () => activePlayer = activePlayer === 'X' ? 'O' : 'X';
+
 const playerAction = (cell, i) => {
   if (isValidMove(cell)) {
     cell.innerText = activePlayer;
-    activePlayer = activePlayer === 'X' ? 'O' : 'X';
+    changeActivePlayer();
+    eventBus.post('move', cell.innerText);
   }
 };
 
-export { activePlayer, isValidMove, playerAction };
+export { isValidMove, playerAction };
