@@ -10,8 +10,8 @@ const playerAction = (cell, i) => {
   if (isValidMove(cell)) {
     cell.innerText = activePlayer;
     changeActivePlayer();
-    eventBus.post('move', cell.innerText);
+    eventBus.post('move', [cell.innerText, i]);
   }
 };
 
-export { isValidMove, playerAction };
+export { playerAction };

@@ -84,7 +84,7 @@ h1 {
     font-size: 1.2rem;
     @extend %pointer;
     background: blue;
-    transition: all ease 1s;
+    transition: all ease 1.2s;
     transition-property: filter, transform, color;
     
     &:hover {
