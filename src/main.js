@@ -1,12 +1,14 @@
 import './css/style.scss';
 import eventBus from '@/bus';
 import { startNewGame } from '@/reset';
-import { X_WON, O_WON, TIE, winConditions, gameBoard } from '@/constants';
-import { playerAction } from '@/actions';
+import { X_WON, O_WON, TIE, winConditions, gameBoard, moveControllers } from '@/constants';
+import { makeMove } from '@/actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   const player = document.getElementById('player');
   const status = document.getElementById('status');
+  
+  const arr = [];
   
   const isGameOver = () => {
     return winConditions.some(([a, b, c]) => 
@@ -15,19 +17,26 @@ document.addEventListener('DOMContentLoaded', () => {
       gameBoard[a] !== '');
   };
   
+  const stopGame = () => {
+    cells.forEach((cell, i) => cell.removeEventListener('click', moveControllers[i]));
+  };
+  
   eventBus.subscribe('move', ([message, i]) => {
     status.classList.toggle('next');
     player.classList.remove('X', 'O');
     player.classList.add(message);
     player.innerText = message;
     gameBoard[i] = message;
-    if (isGameOver()) console.log('THE END');
+    
+    if (isGameOver()) stopGame();
   });
   
   const cells = Array.from(document.querySelectorAll('.cell'));
   
   cells.forEach((cell, i) => {
-    cell.addEventListener('click', () => playerAction(cell, i));
+    let moveController = makeMove.bind(null, cell, i);
+    moveControllers.push(moveController);
+    cell.addEventListener('click', moveController, false);
   });
   
   document.getElementById('reset').addEventListener('click', startNewGame, false);

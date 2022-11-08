@@ -14,4 +14,8 @@ const playerAction = (cell, i) => {
   }
 };
 
-export { playerAction };
+const makeMove = (cell, i) => {
+  playerAction(cell, i);
+};
+
+export { makeMove };
