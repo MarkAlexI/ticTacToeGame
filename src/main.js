@@ -8,13 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const player = document.getElementById('player');
   const status = document.getElementById('status');
   
-  const arr = [];
-  
   const isGameOver = () => {
-    return winConditions.some(([a, b, c]) => 
-      gameBoard[a] === gameBoard[b] && 
-      gameBoard[b] === gameBoard[c] && 
-      gameBoard[a] !== '');
+    return winConditions.some((el) =>
+        el.reduce((sum, curr) => sum &&
+          gameBoard[curr] === gameBoard[el[0]],
+          gameBoard[el[0]] !== ''));
   };
   
   const stopGame = () => {
