@@ -12,7 +12,7 @@ body {
 
 .game {
   background-color: $game-color;
-  height: 600px;
+  min-height: 600px;
   font-family: 'Kolker Brush', cursive;
 }
 
@@ -40,9 +40,10 @@ h1 {
 
 .field {
   display: grid;
+  justify-content: center;
   max-width: 312px;
   margin: 0 auto;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   background-color: $cell-color;
   padding: 10px;
 }

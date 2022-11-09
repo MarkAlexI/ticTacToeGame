@@ -23,9 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
   
   eventBus.subscribe('move', ([message, i]) => {
     status.classList.toggle('next');
-    player.classList.remove('X', 'O');
-    player.classList.add(message);
-    player.innerText = message;
+    player.classList.add('X', 'O');
+    player.classList.remove(message);
+    player.innerText = message === 'X' ? 'O' : 'X';
     gameBoard[i] = message;
     
     if (isGameOver()) stopGame();

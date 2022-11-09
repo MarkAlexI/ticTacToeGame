@@ -9,8 +9,8 @@ const changeActivePlayer = () => activePlayer = activePlayer === 'X' ? 'O' : 'X'
 const playerAction = (cell, i) => {
   if (isValidMove(cell)) {
     cell.innerText = activePlayer;
+    eventBus.post('move', [activePlayer, i]);
     changeActivePlayer();
-    eventBus.post('move', [cell.innerText, i]);
   }
 };
 
