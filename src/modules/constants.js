@@ -1,6 +1,4 @@
-const X_WON = 'X_WON';
-
-const O_WON = 'O_WON';
+const WON = ' won!';
 
 const TIE = 'TIE';
 
@@ -19,4 +17,4 @@ const gameBoard = ['', '', '', '', '', '', '', '', ''];
 
 const moveControllers = [];
 
-export { X_WON, O_WON, TIE, winConditions, gameBoard, moveControllers };
+export { WON, TIE, winConditions, gameBoard, moveControllers };
