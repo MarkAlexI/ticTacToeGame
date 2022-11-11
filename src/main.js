@@ -15,8 +15,14 @@ document.addEventListener('DOMContentLoaded', () => {
     player.innerText = prevPlayer === 'X' ? 'O' : 'X';
   };
 
-  const displayResult = () => {
+  const displayResult = (tie) => {
+    tie ?
+    document.getElementById('info').innerText = TIE :
     document.getElementById('last').innerText = WON;
+  };
+
+  const isTie = () => {
+    return gameBoard.join('').length === gameBoard.length;
   };
 
   const isGameOver = () => {
@@ -31,11 +37,11 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   eventBus.subscribe('move', ([message, i]) => {
-    gameBoard[i] = message;
+    gameBoard[i] = message;console.log(isTie());
 
-    if (isGameOver()) {
+    if (isGameOver() || isTie()) {
       stopGame();
-      displayResult();
+      displayResult(!isGameOver() && isTie());
     } else {
       nextPlayer(message);
     }
