@@ -2,23 +2,17 @@ import './css/style.scss';
 import eventBus from '@/bus';
 import { startNewGame } from '@/reset';
 import { WON, TIE, winConditions, gameBoard, moveControllers } from '@/constants';
-import { makeMove } from '@/actions';
+import { nextPlayer, makeMove, shrink, grow } from '@/actions';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const player = document.getElementById('player');
-  const status = document.getElementById('status');
 
-  const nextPlayer = (prevPlayer) => {
-    status.classList.toggle('next');
-    player.classList.add('X', 'O');
-    player.classList.remove(prevPlayer);
-    player.innerText = prevPlayer === 'X' ? 'O' : 'X';
-  };
+  if (window.innerWidth > 645) grow();
+  if (window.innerWidth < 312) shrink();
 
   const displayResult = (tie) => {
     tie ?
-    document.getElementById('info').innerText = TIE :
-    document.getElementById('last').innerText = WON;
+      document.getElementById('info').innerText = TIE :
+      document.getElementById('last').innerText = WON;
   };
 
   const isTie = () => {
@@ -37,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   eventBus.subscribe('move', ([message, i]) => {
-    gameBoard[i] = message;console.log(isTie());
+    gameBoard[i] = message;
 
     if (isGameOver() || isTie()) {
       stopGame();
@@ -54,6 +48,10 @@ document.addEventListener('DOMContentLoaded', () => {
     moveControllers.push(moveController);
     cell.addEventListener('click', moveController, false);
   });
+
+  document.getElementById('low').addEventListener('click', shrink, false);
+  
+  document.getElementById('high').addEventListener('click', grow, false);
 
   document.getElementById('reset').addEventListener('click', startNewGame, false);
 });
