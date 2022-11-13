@@ -1,7 +1,7 @@
 import './css/style.scss';
 import eventBus from '@/bus';
 import { startNewGame } from '@/reset';
-import { WON, TIE, winConditions, gameBoard, moveControllers } from '@/constants';
+import { WON, TIE, winConditions, gameBoard, moveControllers, proxyGrid } from '@/constants';
 import { nextPlayer, makeMove, shrink, grow } from '@/actions';
 import { openModalBtn, closeModalBtn, openModal, closeModal } from '@/modal';
 
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const isGameOver = () => {
-    return winConditions.some((el) =>
+    return winConditions[-3 + proxyGrid.rows].some((el) =>
       el.reduce((sum, curr) => sum &&
         gameBoard[curr] === gameBoard[el[0]],
         gameBoard[el[0]] !== ''));
@@ -51,12 +51,18 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   document.getElementById('low').addEventListener('click', shrink, false);
-  
+
   document.getElementById('high').addEventListener('click', grow, false);
 
   document.getElementById('reset').addEventListener('click', startNewGame, false);
-  
+
   openModalBtn.addEventListener('click', openModal, false);
-  
+
   closeModalBtn.addEventListener('click', closeModal, false);
+
+  const levels = Array.from(document.getElementsByClassName('level'));
+
+  levels.forEach((level, i) => {
+    level.addEventListener('click', () => proxyGrid.rows = i + 3, false);
+  });
 });
