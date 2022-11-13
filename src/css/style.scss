@@ -1,6 +1,7 @@
 @import 'reset';
 @import 'vars';
 @import 'fonts';
+@import 'modal';
 
 %pointer {
   cursor: pointer;
@@ -67,19 +68,19 @@ p {
 }
 
 .X {
-    color: $x-color;
+  color: $x-color;
 }
 
 .O {
-    color: $o-color;
+  color: $o-color;
 }
 
 .buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    column-gap: clamp(1rem, 2.5rem, 1.5rem);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  column-gap: clamp(1rem, 2.5rem, 1.5rem);
 }
 
 .btn {
@@ -102,16 +103,16 @@ p {
 }
 
 #reset {
-    color: white;
-    border: blueviolet;
-    background: blue;
-    transition: all ease 1.2s;
-    transition-property: filter, transform, color;
-    
-    &:hover {
-      background-color: violet;
-      filter: drop-shadow(0.25rem 0 0.75rem #ef9035);
-      transform: perspective(50em) rotateY(50deg);
-      color: gold;
-    }
+  color: white;
+  border: blueviolet;
+  background: blue;
+  transition: all ease 1.2s;
+  transition-property: filter, transform, color;
+
+  &:hover {
+    background-color: violet;
+    filter: drop-shadow(0.25rem 0 0.75rem #ef9035);
+    transform: perspective(50em) rotateY(50deg);
+    color: gold;
+  }
 }

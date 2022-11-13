@@ -9,6 +9,24 @@
 </head>
 
 <body>
+  <section class="modal hidden">
+      <div class="flex">
+        <img src="../src/assets/images/game-small.png" width="100px" height="100px" alt="game" />
+        <button class="btn-close">⨉</button>
+      </div>
+      <div>
+        <h3>Ghange level</h3>
+        <p>
+          Choose complexity of game. Try hard!
+        </p>
+      </div>
+    
+      <button class="btn">Easy (3 × 3)</button>
+      <button class="btn">Medium (4 × 4)</button>
+      <button class="btn">Hard (5 × 5)</button>
+  </section>
+  <div class="overlay hidden"></div>
+
   <div class="game">
     <div class="title">
       <h1 id="status" class="">PLAY</h1>
@@ -33,10 +51,10 @@
         <button class="btn inset" id="low">&ll;</button>
         <button class="btn inset" id="high">&gg;</button>
       </div>
-        <button class="btn" id="reset">New game</button>
-        <button class="btn inset" id="cells">Rows</button>
-      </div>
+      <button class="btn" id="reset">New game</button>
+      <button class="btn inset btn-open" id="cells">Rows</button>
     </div>
+  </div>
   </div>
 </body>
 

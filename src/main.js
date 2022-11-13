@@ -3,6 +3,7 @@ import eventBus from '@/bus';
 import { startNewGame } from '@/reset';
 import { WON, TIE, winConditions, gameBoard, moveControllers } from '@/constants';
 import { nextPlayer, makeMove, shrink, grow } from '@/actions';
+import { openModalBtn, closeModalBtn, openModal, closeModal } from '@/modal';
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -54,4 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('high').addEventListener('click', grow, false);
 
   document.getElementById('reset').addEventListener('click', startNewGame, false);
+  
+  openModalBtn.addEventListener('click', openModal, false);
+  
+  closeModalBtn.addEventListener('click', closeModal, false);
 });
