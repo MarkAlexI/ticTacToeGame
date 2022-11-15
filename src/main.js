@@ -1,9 +1,10 @@
 import './css/style.scss';
 import eventBus from '@/bus';
 import { startNewGame } from '@/reset';
-import { WON, TIE, winConditions, gameBoard, moveControllers, proxyGrid } from '@/constants';
+import { WON, TIE, winConditions, gameBoard, moveControllers } from '@/constants';
 import { nextPlayer, makeMove, shrink, grow } from '@/actions';
 import { openModalBtn, closeModalBtn, openModal, closeModal } from '@/modal';
+import { rows } from '@/grid';
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -21,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const isGameOver = () => {
-    return winConditions[-3 + proxyGrid.rows].some((el) =>
+    return winConditions[-3 + rows].some((el) =>
       el.reduce((sum, curr) => sum &&
         gameBoard[curr] === gameBoard[el[0]],
         gameBoard[el[0]] !== ''));
@@ -60,9 +61,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   closeModalBtn.addEventListener('click', closeModal, false);
 
+  const changeLevel = (num) => {
+    if (gameBoard.length !== (num ** 2)) {
+      localStorage.setItem('gridsize', num);
+      startNewGame();
+    } else {
+      return;
+    }
+  };
+
   const levels = Array.from(document.getElementsByClassName('level'));
 
   levels.forEach((level, i) => {
-    level.addEventListener('click', () => proxyGrid.rows = i + 3, false);
+    let newLevel = changeLevel.bind(null, i + 3);
+    level.addEventListener('click', newLevel, false);
   });
 });

@@ -1,30 +1,8 @@
+import { rows } from '@/grid';
+
 const WON = ' won!';
 
 const TIE = 'TIE';
-
-const grid = {
-  value: 3,
-  get rows() {
-    return this.value;
-  },
-  set rows(int) {
-    this.value = int;
-  }
-};
-
-const handler = {
-  set(target, prop, value) {
-    if (target[prop] !== value) {
-      console.log(`changed ${prop} from ${target[prop]} to ${value}`);
-      target[prop] = value;
-      gameBoard.length = 0;;
-      gameBoard.push(...newGameBoard());
-    }
-    return value;
-  },
-};
-
-const proxyGrid = new Proxy(grid, handler);
 
 const winConditions = [
   [
@@ -65,10 +43,10 @@ const winConditions = [
   ]
 ];
 
-const newGameBoard = () => Array(grid.rows ** 2).fill('');
+const newGameBoard = () => Array(rows ** 2).fill('');
 
 const gameBoard = newGameBoard();
 
 const moveControllers = [];
 
-export { WON, TIE, winConditions, gameBoard, moveControllers, proxyGrid };
+export { WON, TIE, winConditions, gameBoard, moveControllers };
