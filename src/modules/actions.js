@@ -31,8 +31,9 @@ const makeMove = (cell, i) => {
   playerAction(cell, i);
 };
 
-const reSize = (num) => {
-  html.style.fontSize = `${16 * num}px`;
+const reSize = (num) => {console.log(typeof window.getComputedStyle(html, null).getPropertyValue('font-size'));
+  const newSize = parseFloat(window.getComputedStyle(html, null).getPropertyValue('font-size')) * num;
+  html.style.fontSize = `${newSize}px`;
 };
 
 const shrink = () => reSize(.75);
