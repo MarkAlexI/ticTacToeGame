@@ -1,5 +1,6 @@
 import eventBus from '@/bus';
 
+const vibrate = (x = [200]) => navigator.vibrate(x);
 const html = document.getElementsByTagName('html')[0];
 const size = html.style.fontSize;
 
@@ -22,6 +23,7 @@ const changeActivePlayer = () => activePlayer = activePlayer === 'X' ? 'O' : 'X'
 const playerAction = (cell, i) => {
   if (isValidMove(cell)) {
     cell.innerText = activePlayer;
+    vibrate();
     eventBus.post('move', [activePlayer, i]);
     changeActivePlayer();
   }
@@ -31,7 +33,8 @@ const makeMove = (cell, i) => {
   playerAction(cell, i);
 };
 
-const reSize = (num) => {console.log(typeof window.getComputedStyle(html, null).getPropertyValue('font-size'));
+const reSize = (num) => {
+  vibrate();
   const newSize = parseFloat(window.getComputedStyle(html, null).getPropertyValue('font-size')) * num;
   html.style.fontSize = `${newSize}px`;
 };
@@ -40,4 +43,4 @@ const shrink = () => reSize(.75);
 
 const grow = () => reSize(1.25);
 
-export { nextPlayer, makeMove, shrink, grow };
+export { nextPlayer, makeMove, shrink, grow, vibrate };

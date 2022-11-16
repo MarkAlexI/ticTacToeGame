@@ -2,9 +2,10 @@ import './css/style.scss';
 import eventBus from '@/bus';
 import { startNewGame } from '@/reset';
 import { WON, TIE, winConditions, gameBoard, moveControllers } from '@/constants';
-import { nextPlayer, makeMove, shrink, grow } from '@/actions';
+import { nextPlayer, makeMove, shrink, grow, vibrate } from '@/actions';
 import { openModalBtn, closeModalBtn, openModal, closeModal } from '@/modal';
 import { rows } from '@/grid';
+import { openFullscreen, closeFullscreen } from '@/fullscreen';
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -36,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     gameBoard[i] = message;
 
     if (isGameOver() || isTie()) {
+      vibrate([400]);
       stopGame();
       displayResult(!isGameOver() && isTie());
     } else {
@@ -51,6 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
     cell.addEventListener('click', moveController, false);
   });
 
+  document.getElementById('tofullscreen').addEventListener('click', openFullscreen, false);
+  
+  document.getElementById('tonormscreen').addEventListener('click', closeFullscreen, false);
+
   document.getElementById('low').addEventListener('click', shrink, false);
 
   document.getElementById('high').addEventListener('click', grow, false);
@@ -63,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const changeLevel = (num) => {
     if (gameBoard.length !== (num ** 2)) {
+      vibrate([200, 100, 200]);
       localStorage.setItem('gridsize', num);
       startNewGame();
     } else {
