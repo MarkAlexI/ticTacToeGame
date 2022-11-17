@@ -1,37 +1,21 @@
+import { shrink } from '@/actions';
+
 const rows =+localStorage.getItem('gridsize') || 3;
-/*const grid = {
-  value: +localStorage.getItem('gridsize') || 3,
-  get rows() {
-    return this.value;
-  },
-  set rows(int) {
-    this.value = int;
-  }
-};
-*/
+
 const createNewField = () => {
+  const gameDiv = document.querySelector('.game');
   const field = document.getElementById('field');
   const divs = `<div class="cell"></div>`.repeat(rows ** 2);
+  
+  gameDiv.style.minWidth = `${6.8 * rows}rem`;
   field.innerHTML = divs;
-  field.style.maxWidth = `${6.5 * rows}rem`;
+  field.style.width = `${6.5 * rows}rem`;
   field.style.gridTemplateColumns = `${ Array(rows).fill('auto').join(' ') }`;
+  
+  const size = parseFloat(window.getComputedStyle(gameDiv, null).getPropertyValue('width'));
+  if (size > window.screen.width) shrink();
 };
 
 createNewField();
-
-/*const handler = {
-  set(target, prop, value) {
-    if (target[prop] !== value) {
-      console.log(`changed ${prop} from ${target[prop]} to ${value}`);
-      target[prop] = value;
-      gameBoard.length = 0;;
-      gameBoard.push(...newGameBoard());
-      createNewField();console.log(gameBoard);
-    }
-    return value;
-  },
-};
-
-const proxyGrid = new Proxy(grid, handler);*/
 
 export { rows };
