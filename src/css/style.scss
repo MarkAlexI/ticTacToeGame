@@ -2,9 +2,20 @@
 @import 'vars';
 @import 'fonts';
 @import 'modal';
+@import 'tooltip';
 
 %pointer {
   cursor: pointer;
+}
+
+%inset {
+  background: linear-gradient(to right, #b9b9b9, #565656);
+  text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.5);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  border: 2px inset;
+  border-color: gray darkslategrey darkslategrey gray;
 }
 
 body {
@@ -98,14 +109,14 @@ p {
 }
 
 .inset {
-  background: linear-gradient(to right, #b9b9b9, #565656);
+  @extend %inset;
   color: transparent;
-  text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.5);
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  background-clip: text;
-  border: 2px inset;
-  border-color: gray darkslategrey darkslategrey gray;
+}
+
+.set {
+  @extend %inset;
+  color: whitesmoke;
+  padding: 10px 13px;
 }
 
 #reset {
