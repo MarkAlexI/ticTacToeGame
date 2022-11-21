@@ -23,7 +23,7 @@
   &:after {
     content: attr(data-tooltip);
     text-align: center;
-    min-width: 3em;
+    min-width: 7em;
     max-width: 21em;
     white-space: wrap;
     overflow: hidden;
